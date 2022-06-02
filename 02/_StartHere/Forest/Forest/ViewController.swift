@@ -1,11 +1,10 @@
 import UIKit
 import Combine
-import FarFarAway
 
 class ViewController: UIViewController {
   @IBOutlet private weak var label: UILabel!
   private var cancellables: Set<AnyCancellable> = Set()
-  let state = State()
+  let link = Link()
   
   override func viewDidLoad() {
     super.viewDidLoad()
@@ -13,17 +12,18 @@ class ViewController: UIViewController {
   }
   
   @IBAction private func next(_ sender: UIButton) {
-	  state.next()
+	  link.next()
   }
 }
 
 extension ViewController {
 	private func labelSubscription() -> AnyCancellable {
-		state.$model
-		.dropFirst()
-		.map(\.value.description)
+		link.$contents
 		.sink {[weak self] string in
 		  self?.label.text = string
 		}
 	}
 }
+
+
+// NEXT: Chapter2: Section 5 Assign p 116
