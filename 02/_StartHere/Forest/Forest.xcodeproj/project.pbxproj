@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0476FA232848EDC600D0FACF /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0476FA222848EDC600D0FACF /* Model.swift */; };
 		62140958257BD46B0045F0D3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62140957257BD46B0045F0D3 /* AppDelegate.swift */; };
 		6214095A257BD46B0045F0D3 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62140959257BD46B0045F0D3 /* SceneDelegate.swift */; };
 		6214095C257BD46B0045F0D3 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6214095B257BD46B0045F0D3 /* ViewController.swift */; };
@@ -43,6 +44,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		0476FA222848EDC600D0FACF /* Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
 		62140954257BD46B0045F0D3 /* Forest.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Forest.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		62140957257BD46B0045F0D3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		62140959257BD46B0045F0D3 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -118,6 +120,7 @@
 		62A5E68E2582689C00DCF42D /* FarFarAway */ = {
 			isa = PBXGroup;
 			children = (
+				0476FA222848EDC600D0FACF /* Model.swift */,
 				62A5E69B258268D600DCF42D /* Support */,
 			);
 			path = FarFarAway;
@@ -197,7 +200,7 @@
 					};
 					62A5E68C2582689C00DCF42D = {
 						CreatedOnToolsVersion = 12.3;
-						LastSwiftMigration = 1230;
+						LastSwiftMigration = 1330;
 					};
 				};
 			};
@@ -255,6 +258,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0476FA232848EDC600D0FACF /* Model.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -407,6 +411,7 @@
 		62140969257BD46C0045F0D3 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
@@ -426,6 +431,7 @@
 		6214096A257BD46C0045F0D3 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
