@@ -1,16 +1,26 @@
 import UIKit
+import Combine
 
 class ViewController: UIViewController {
   @IBOutlet private weak var label: UILabel!
+	private var cancellable: AnyCancellable?
 	
-	private var value = 0 {
-		didSet {
-			label.text = value.description
-		}
-	}
+	@Published private var value = 0
   
   @IBAction private func next(_ sender: UIButton) {
 	  value = Int.random(in: 1...100)
   }
+	
+	override func viewDidLoad() {
+		super.viewDidLoad()
+		
+		cancellable = $value
+			.dropFirst()
+			.map (\.description)
+			.sink { [weak self] string in
+				self?.label.text = string
+			}
+
+	}
 }
 
