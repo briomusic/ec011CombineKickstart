@@ -4,22 +4,26 @@ import FarFarAway
 
 class ViewController: UIViewController {
   @IBOutlet private weak var label: UILabel!
-  private var cancellable: AnyCancellable?
-  
-  @Published private var model = Model(value: 0)
+  private var cancellables: Set<AnyCancellable> = Set()
+  let state = State()
   
   override func viewDidLoad() {
     super.viewDidLoad()
-    cancellable
-      = $model
-      .dropFirst()
-	  .map(\.value.description)
-      .sink {[weak self] string in
-        self?.label.text = string
-      }
+	  labelSubscription().store(in: &cancellables)
   }
   
   @IBAction private func next(_ sender: UIButton) {
-    model = Model(value: Int.random(in: 1...100))
+	  state.next()
   }
+}
+
+extension ViewController {
+	private func labelSubscription() -> AnyCancellable {
+		state.$model
+		.dropFirst()
+		.map(\.value.description)
+		.sink {[weak self] string in
+		  self?.label.text = string
+		}
+	}
 }

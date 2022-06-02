@@ -8,9 +8,19 @@
 import Foundation
 
 public struct Model {
-	public let value: Int
+	public let value : Int
 	
-	public init(value: Int) {
+	init() {
+		self.value = 0
+	}
+}
+
+extension Model {
+	private init(value: Int) {
 		self.value = value
+	}
+	
+	var next: Model {
+		Model(value: Int.random(in: 1...100))
 	}
 }
