@@ -6,16 +6,14 @@
 //
 
 import Foundation
-import Combine
 import FarFarAway
 
 class Link {
-	private var cancellables: Set<AnyCancellable> = Set()
 	private let state = State()
 	@Published public var contents: String? = "..."
 	
 	init() {
-		contentsSubscription().store(in: &cancellables)
+		contentsSubscription()
 	}
 }
 
@@ -24,13 +22,12 @@ extension Link {
 		state.next()
 	}
 	
-	private func contentsSubscription() -> AnyCancellable {
+	private func contentsSubscription()  {
 		state.$model
 		.dropFirst()
 		.map(\.value.description)
-		.sink {[weak self] string in
-			self?.contents = string
-		}
+		.map{string in .some(string)}
+		.assign(to: &$contents)
 	}
 
 }

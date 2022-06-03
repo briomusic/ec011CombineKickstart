@@ -19,9 +19,7 @@ class ViewController: UIViewController {
 extension ViewController {
 	private func labelSubscription() -> AnyCancellable {
 		link.$contents
-		.sink {[weak self] string in
-		  self?.label.text = string
-		}
+		.assign(to: \.text, on: label)
 	}
 }
 
