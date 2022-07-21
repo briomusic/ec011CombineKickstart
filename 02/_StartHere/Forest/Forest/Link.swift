@@ -25,9 +25,8 @@ extension Link {
 	private func contentsSubscription()  {
 		state.$model
 		.dropFirst()
-		.map(\.value.description)
-		.map{string in .some(string)}
-		.assign(to: &$contents)
+		.map(\.value)
+		.assignDescription(asOptionalTo: &$contents)
 	}
 
 }
