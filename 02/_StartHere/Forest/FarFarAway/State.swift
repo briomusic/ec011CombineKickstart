@@ -13,7 +13,7 @@ public class State {
 		didSet { subject.send(model.value) }
 	}
 	
-	public let subject = CurrentValueSubject<Int, Never>(0)
+	public let subject = PassthroughSubject<Int, Never>()
 	
 	public init() {}
 }
