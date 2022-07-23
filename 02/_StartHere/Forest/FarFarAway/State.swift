@@ -9,11 +9,16 @@ import Foundation
 import Combine
 
 public class State {
-	private var model = Model() {
-		didSet { subject.send(model.value) }
+	
+	public var value: Int {
+		model.value
 	}
 	
-	public let subject = PassthroughSubject<Int, Never>()
+	private var model = Model() {
+		didSet { subject.send() }
+	}
+	
+	public let subject = PassthroughSubject<Void, Never>()
 	
 	public init() {}
 }

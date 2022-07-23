@@ -25,6 +25,9 @@ extension Link {
 	private func contentsSubscription()  {
 		state
 			.subject
+			.map{ [state] _ in
+				state.value
+			}
 			.assignDescription(asOptionalTo: &$contents)
 	}
 }
