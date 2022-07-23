@@ -6,9 +6,14 @@
 //
 
 import Foundation
+import Combine
 
 public class State {
-	@Published public private(set) var model = Model()
+	private var model = Model() {
+		didSet { subject.send(model.value) }
+	}
+	
+	public let subject = CurrentValueSubject<Int, Never>(0)
 	
 	public init() {}
 }

@@ -23,10 +23,8 @@ extension Link {
 	}
 	
 	private func contentsSubscription()  {
-		state.$model
-		.dropFirst()
-		.map(\.value)
-		.assignDescription(asOptionalTo: &$contents)
+		state
+			.subject
+			.assignDescription(asOptionalTo: &$contents)
 	}
-
 }
