@@ -8,23 +8,18 @@
 import Foundation
 import Combine
 
-public class State {
+public class State: ObservableObject {
 	
-	public var value: Int {
-		model.value
-	}
-	
-	private var model = Model() {
-		didSet { subject.send() }
-	}
-	
-	public let subject = PassthroughSubject<Void, Never>()
+	@Published private var model = Model()
 	
 	public init() {}
 }
 
 extension State {
-	
+	public var value: Int {
+		model.value
+	}
+
 	public func next() {
 		model = model.next
 	}

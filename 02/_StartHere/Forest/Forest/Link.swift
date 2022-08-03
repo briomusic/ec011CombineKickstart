@@ -24,7 +24,7 @@ extension Link {
 	
 	private func contentsSubscription()  {
 		state
-			.subject
+			.objectWillChange
 			.map{ [state] _ in
 				state.value
 			}
