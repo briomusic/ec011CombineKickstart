@@ -23,11 +23,10 @@ extension Link {
 	}
 	
 	private func contentsSubscription()  {
-		state
-			.objectWillChange
-			.map{ [state] _ in
-				state.value
-			}
-			.assignDescription(asOptionalTo: &$contents)
+		state.valuePublisher
+			.map{ .some($0.description) }
+			.assign(to: &$contents)
+		// equivalent to
+//			.assignDescription(asOptionalTo: &$contents)
 	}
 }
