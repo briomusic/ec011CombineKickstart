@@ -8,9 +8,9 @@
 import Foundation
 import FarFarAway
 
-class Link {
+class Link: ObservableObject {
 	private let state = State()
-	@Published public var contents: String? = "..."
+	@Published public var contents: String = "..."
 	
 	init() {
 		contentsSubscription()
@@ -24,7 +24,7 @@ extension Link {
 	
 	private func contentsSubscription()  {
 		state.valuePublisher
-			.map{ .some($0.description) }
+			.map{ $0.description }
 			.assign(to: &$contents)
 		// equivalent to
 //			.assignDescription(asOptionalTo: &$contents)
