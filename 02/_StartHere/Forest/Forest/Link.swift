@@ -23,7 +23,8 @@ extension Link {
 	}
 	
 	private func contentsSubscription()  {
-		state.valuePublisher
+		state.$value
+			.dropFirst()
 			.map{ $0.description }
 			.assign(to: &$contents)
 		// equivalent to
